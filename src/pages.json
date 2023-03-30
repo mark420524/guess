@@ -1,0 +1,54 @@
+{
+    "easycom": {
+        "^tn-(.*)": "@/tuniao-ui/components/tn-$1/tn-$1.vue"
+    },
+    "pages": [  
+        {
+            "path": "pages/index/index",
+            "style": {
+                "navigationBarTitleText": "早晚猜",
+                "navigationStyle": "custom"
+            }
+        }, {
+            "path": "pages/index/top",
+            "style": {
+                "navigationBarTitleText": "排行榜-早晚猜",
+                "enablePullDownRefresh": false
+            }
+
+        }, {
+            "path": "pages/index/play",
+            "style": {
+                "navigationBarTitleText": "早晚猜",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": false
+            }
+
+        }, {
+            "path": "pages/index/privacy",
+            "style": {
+                "navigationBarTitleText": "隐私保护指引",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": false
+            }
+        }, {
+            "path": "pages/user/index",
+            "style": {
+                "navigationBarTitleText": "个人中心",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": false
+            }
+
+        }
+    ],
+    "subPackages": [
+        
+    ],
+    
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "早晚猜",
+        "navigationBarBackgroundColor": "#FFFFFF",
+        "backgroundColor": "#F3F3F3"
+    }
+}
