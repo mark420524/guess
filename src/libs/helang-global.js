@@ -5,7 +5,7 @@ let URI = {
 	/* 文件上传服务器路径 */
 	upload: '',
 	/* 图片服务路径 */
-	images: 'http://image.siival.com/'
+	images: 'http://127.0.0.1:8000/avatar/'
 }
 // #ifndef H5
 let miniAppInfo =  uni.getAccountInfoSync();
@@ -109,7 +109,7 @@ let joinImgUrl = (url)=>{
 
 /* 获取应用在线图片地址 */
 let getAppImgs = ()=>{
-	let basicUrl = '/app';
+	let basicUrl = 'app';
 	let imgs={};
     imgs[`logo`] = joinImgUrl(`${basicUrl}/logo.png`);
 	// 背景

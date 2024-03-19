@@ -92,9 +92,17 @@
 					title: '正在初始化...'
 				})
 				login.getAppCode().then(res=>{
-					//console.log('loginCode' ,res )
-					let appId = uni.$hl.appId
-					let uri = 'user/login/' + appId;
+					console.log('loginCode' ,res )
+                    let type = res.type;
+                    let appId = '';
+                    let uri = '';
+                    if (type=='h5') {
+                        uri = 'user/weblogin'  ;
+                    }else{ 
+					    appId = uni.$hl.appId
+					    uri = 'user/login/' + appId;
+                    }
+					
 					//console.log(appId, uri)
 					this.$request.post(uri, res).then(loginRes=>{
 						uni.hideLoading();
@@ -165,6 +173,14 @@
                         url: '/pages/index/top'
                     })
                 }else{
+                    // #ifdef H5 
+                    uni.showModal({
+                        title: '提示',
+                        content: 'web端暂不支持使用排行榜功能',
+                        showCancel: false
+                    });
+                    // #endif
+                    // #ifndef H5
                     uni.showModal({
                         title: '提示',
                         content: '使用排行榜功能，需要获取用户昵称、头像信息',
@@ -177,6 +193,7 @@
                             }
                         }
                     })
+                    // #endif
                 }
                 
             },
@@ -242,11 +259,13 @@
                 uni.$hl.logout();
             },
             toUserIndex() {
+                // #ifndef H5 
                 if (!uni.$hl.isLogin()) {
                     toPage('/pages/user/login' )
                     return;
                 }
                 this.toPage('/pages/user/index')
+                // #endif
             },
             toPage(url){
                 

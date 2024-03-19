@@ -15,6 +15,9 @@ function getAppCode() {
             }
         })
         // #endif
+        // #ifdef H5
+        resolve({type:'h5'})
+        // #endif
         // #ifdef APP-PLUS
         weixinAuthService.authorize(function(res) {
             let data = {
