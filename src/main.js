@@ -11,7 +11,7 @@ request.setConfig({
     
     // 设置请求头，支持所有请求头设置，也可不设置，去掉header就行
     header: {
-      'X-token-api': 'wqer234asdfwer123asfawre4',
+      'X-token-api': '2d8e14d86836417290c418f1e902ce58',
       "Content-Type": "application/x-www-form-urlencoded",
     }
 })
