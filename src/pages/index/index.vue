@@ -104,7 +104,9 @@
                     }
 					
 					//console.log(appId, uri)
-					this.$request.post(uri, res).then(loginRes=>{
+                    const requestData = Object.assign({}, res);
+                    // H5 端传 deviceId 给后端，后端可用它区分游客身份并返回 uid/token
+					this.$request.post(uri, requestData).then(loginRes=>{
 						uni.hideLoading();
 						uni.setStorageSync("uid",loginRes.userId);
 						uni.setStorageSync("userToken",loginRes.token);

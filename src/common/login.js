@@ -1,3 +1,16 @@
+import uuid from '../tuniao-ui/libs/function/uuid.js';
+
+const H5_VISITOR_ID_KEY = 'h5_visitor_id';
+
+function getH5VisitorId() {
+    let id = uni.getStorageSync(H5_VISITOR_ID_KEY);
+    if (!id) {
+        id = uuid(32, false);
+        uni.setStorageSync(H5_VISITOR_ID_KEY, id);
+    }
+    return id;
+}
+
 function getAppCode() {
     return new Promise((resolve, reject) => {
         // #ifdef MP-WEIXIN
@@ -16,7 +29,7 @@ function getAppCode() {
         })
         // #endif
         // #ifdef H5
-        resolve({type:'h5'})
+        resolve({type:'h5', deviceId: getH5VisitorId()})
         // #endif
         // #ifdef APP-PLUS
         weixinAuthService.authorize(function(res) {
@@ -49,7 +62,7 @@ function getAppCode() {
     })
 }
 
-
 export default {
-    getAppCode
+    getAppCode,
+    getH5VisitorId
 }
